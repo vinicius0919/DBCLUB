@@ -49,7 +49,9 @@ const superCharacter = (character) => {
           <img class="dragon-ball-icon" src="./assets/stars.png" alt="4 stars dragon ball" />
         </div>
         <h2>${character.name}</h2>
-        <img class="character-image" src="${character.image}" alt="${character.name}" />
+        <div class="character-image-container">
+          <img class="character-image" src="${character.image}" alt="${character.name}" />
+        </div>
         <p><span class="bold_info">Poder Base: </span> <br /> ${poderBase}</p>
         <p><span class="bold_info">Poder Máximo: </span> <br /> ${poderMaximo}</p>
       </div>
@@ -59,7 +61,9 @@ const superCharacter = (character) => {
   return `
     <div class="character">
       <h2>${character.name}</h2>
-      <img class="character-image" src="${character.image}" alt="${character.name}" />
+        <div class="character-image-container">
+          <img class="character-image" src="${character.image}" alt="${character.name}" />
+        </div>
       <p> <span class="bold_info">Poder Base: </span> <br /> ${poderBase}</p>
       <p><span class="bold_info">Poder Máximo: </span> <br /> ${poderMaximo}</p>
     </div>
