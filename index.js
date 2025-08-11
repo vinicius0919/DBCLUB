@@ -41,7 +41,6 @@ const superCharacter = (character) => {
     }
   }
 
-  console.log(poderMaximo);
 
   if (isSuper) {
     return `
@@ -73,7 +72,6 @@ const fetchApi = (link) => {
     .then((response) => response.json())
     .then((data) => {
       characters = data.items;
-      console.log(characters);
       root.innerHTML = characters
         .map((character) => superCharacter(character))
         .join("");
