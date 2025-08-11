@@ -124,3 +124,55 @@ button:hover {
         margin: 2rem 0 .2rem 0;
     }
 }
+
+.carroussel {
+  height: 50px;
+}
+
+.footer-img {
+  width: 50px;
+  border-radius: 10px;
+  animation: 4s ease-in slide infinite;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem;
+  border: 1px solid #007bff;
+  border-radius: 25px;
+  &:hover {
+    text-decoration: underline;
+    background-color: rgb(255, 60, 0);
+    color: #ffffff;
+    border: solid 1px rgb(0, 0, 0);
+    transition: all .5s ease-in-out;
+  }
+}
+footer {
+  background-color: #00000060;
+  padding: .5rem;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #ffffff;
+  border-top: 1px solid rgb(255, 60, 0);
+  padding-top: 2rem;
+}
+
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translateX(+100%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+

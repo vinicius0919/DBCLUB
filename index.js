@@ -3,6 +3,24 @@ const btn_previous = document.getElementById("btn_previous");
 const btn_next = document.getElementById("btn_next");
 const root = document.getElementById("root");
 
+const image1 = document.getElementsByClassName("image-1")[0];
+const image2 = document.getElementsByClassName("image-2")[0];
+const image3 = document.getElementsByClassName("image-3")[0];
+
+// execute display none one time at start
+image1.style.display = "none";
+image2.style.display = "none";
+image3.style.display = "none";
+
+let counter = 0;
+
+setInterval(() => {
+  image1.style.display = counter === 0 ? "" : "none";
+  image2.style.display = counter === 1 ? "" : "none";
+  image3.style.display = counter === 2 ? "" : "none";
+  counter = (counter + 1) % 3;
+}, 4000);
+
 const baseUrl = "https://dragonball-api.com/api/characters";
 let characters = [];
 
