@@ -6,7 +6,10 @@ body {
 }
 
 h1 {
-  color: #333;
+  color: #fff;
+  text-align: center;
+  text-shadow: 2px 2px 1px rgba(255, 72, 0, 0.8);
+  font-size: calc(1.5rem + 1vw);
 }
 
 #root {
@@ -89,4 +92,12 @@ button {
 button:hover {
     transform: scale(1.1);
     transition: all 0.2s ease-in-out;
+}
+
+
+@media screen and (max-width: 768px) {
+  .character {
+    width: calc(40% - 20px);
+  }
+    
 }
