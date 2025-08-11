@@ -6,53 +6,86 @@ const root = document.getElementById("root");
 const baseUrl = "https://dragonball-api.com/api/characters";
 let characters = [];
 
-;
+const abreviacoesPadrao = {
+  billion: "B",
+  trillion: "T",
+  quadrillion: "Qa",
+  quintillion: "Qi",
+  sextillion: "Sx",
+  septillion: "Sp",
+  octillion: "Oc",
+  nonillion: "No",
+  decillion: "Dc",
+  googolplex: "Gp",
+};
 
 const superCharacter = (character) => {
-    if(parseInt((character.ki).replaceAll(".", "")) > 9000) {
-    return`
-        <div class="character">
-            <img class="dragon-ball-icon" src="./assets/dragonball2.png" alt="4 stars dragon ball" />
-            <h2>${character.name}</h2>
-            <img class="character-image" src="${character.image}" alt="${character.name}" />
-            <p>
-            <span class="bold_info">Power Level: </span> ${character.ki}</p>
-        </div>
-    `
+  let poderBase = String(character.ki || "")
+    .toLowerCase()
+    .replaceAll(",", ".");
+  let isSuper = false;
+
+  for (const [key, value] of Object.entries(abreviacoesPadrao)) {
+    if (poderBase.includes(key)) {
+      poderBase = poderBase.replaceAll(key, value);
     }
+  }
+
+  let poderMaximo = String(character.maxKi || "")
+    .toLowerCase()
+    .replaceAll(",", ".");
+  for (const [key, value] of Object.entries(abreviacoesPadrao)) {
+    if (poderMaximo.includes(key)) {
+      isSuper = true;
+      poderMaximo = poderMaximo.replaceAll(key, value);
+    }
+  }
+
+  console.log(poderMaximo);
+
+  if (isSuper) {
     return `
-        <div class="character">
-            <h2>${character.name}</h2>
-            <img class="character-image" src="${character.image}" alt="${character.name}" />
-            <p>
-            <span class="bold_info">Power Level: </span> ${character.ki}</p>
+      <div class="character">
+        <div class="dragon-ball-icon-container">
+          <img class="dragon-ball-icon" src="./assets/stars.png" alt="4 stars dragon ball" />
         </div>
-    `
+        <h2>${character.name}</h2>
+        <img class="character-image" src="${character.image}" alt="${character.name}" />
+        <p><span class="bold_info">Poder Base: </span> <br /> ${poderBase}</p>
+        <p><span class="bold_info">Poder Máximo: </span> <br /> ${poderMaximo}</p>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="character">
+      <h2>${character.name}</h2>
+      <img class="character-image" src="${character.image}" alt="${character.name}" />
+      <p> <span class="bold_info">Poder Base: </span> <br /> ${poderBase}</p>
+      <p><span class="bold_info">Poder Máximo: </span> <br /> ${poderMaximo}</p>
+    </div>
+  `;
 };
 
 const fetchApi = (link) => {
   if (!link) return;
   fetch(link)
-      .then((response) => response.json())
-      .then((data) => {
-        characters = data.items;
-        root.innerHTML = characters
-          .map(
-            (character) => superCharacter(character)
-          )
-          .join("");
-        links = {
-          previous: data.links.previous,
-          next: data.links.next
-        };
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-    }
-
-
-
+    .then((response) => response.json())
+    .then((data) => {
+      characters = data.items;
+      console.log(characters);
+      root.innerHTML = characters
+        .map((character) => superCharacter(character))
+        .join("");
+      links = {
+        previous: data.links.previous,
+        next: data.links.next,
+      };
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error);
+    });
+};
 
 fetchApi(baseUrl);
 

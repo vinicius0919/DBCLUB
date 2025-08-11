@@ -32,20 +32,20 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .character img.character-image {
   max-width: 100%;
   max-height: 200px;
-  filter: drop-shadow(2px 2px 2px rgb(255, 60, 0));
-
-
+  filter: drop-shadow(2px 2px 2px rgb(0, 89, 255));
 }
 
-  .character:hover img.character-image {
-    transform: scale(1.05);
-    transition: transform 0.2s ease-in-out;
-  }
+.character:hover img.character-image {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+  filter: drop-shadow(2px 2px 2px rgb(255, 60, 0));
+}
 
 .pagination {
   display: flex;
@@ -53,17 +53,40 @@ h1 {
   margin-top: 20px;
 }
 
-.dragon-ball-icon {
-  width: 30px;
-  height: 30px;
+.dragon-ball-icon-container {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
   position: absolute;
   align-self: flex-end;
   filter: none;
   transition: opacity 0.2s;
-  border-radius: 100%;
+  background-color: rgb(0, 89, 255);
+  border-radius: 50%;
+  padding: .25rem;
 }
 
-.character:hover .dragon-ball-icon {
+.dragon-ball-icon{
+    width: 20px;
+}
+
+.character:hover .dragon-ball-icon-container {
   transform: rotate(360deg);
   transition: transform 0.5s ease-in-out;
+  background-color: rgb(255, 60, 0);
+}
+
+button {
+  cursor: pointer;
+  padding: 0.5rem;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  background-color: rgb(255, 60, 0);
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.1);
+    transition: all 0.2s ease-in-out;
 }
