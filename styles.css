@@ -32,6 +32,7 @@ h1 {
   background-color: #fff;
   width: calc(18% - 20px);
   min-width: 150px;
+  max-width: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,7 +98,9 @@ button:hover {
 
 @media screen and (max-width: 768px) {
   .character {
+    min-width: calc(40% - 20px);
     width: calc(40% - 20px);
+    height: fit-content;
   }
     
 }
